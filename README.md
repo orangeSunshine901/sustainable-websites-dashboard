@@ -36,7 +36,7 @@ This is just a page that takes a file and uploads.
 # Page Speed Insights
 
 api/page-speed
-This is an api that makes a GET request to the google page speed insights which return the page speed insight data for the url as a JSON string.
+This is an api that makes a POST request to the google page speed insights which return the page speed insight data for the url as a JSON string.
 
 # Upload
 
