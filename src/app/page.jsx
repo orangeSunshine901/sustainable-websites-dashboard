@@ -4,14 +4,14 @@ import Image from 'next/image'
 import { useState } from 'react'
 
 export default function Home() {
-    const [url, setUrl] = useState('')
+    const [bytes, setBytes] = useState('')
     const [carbonData, setCarbonData] = useState(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
 
     const fetchCarbonData = async () => {
-        if (!url) {
-            setError('Please enter a valid URL.')
+        if (!bytes) {
+            setError('Please enter a the Total bytes of the loaded page')
             return
         }
 
@@ -20,7 +20,7 @@ export default function Home() {
 
         try {
             const response = await fetch(
-                `/api/carbon?url=${encodeURIComponent(url)}`
+                `https://api.websitecarbon.com/data?bytes=${bytes}`
             )
             if (!response.ok) {
                 throw new Error('Failed to fetch carbon data. Check the URL.')
@@ -42,9 +42,9 @@ export default function Home() {
             <input
                 type="text"
                 placeholder="Enter website URL"
-                value={url}
-                onChange={(e) => setUrl(e.target.value)}
-                className="url-input"
+                value={bytes}
+                onChange={(e) => setBytes(e.target.value)}
+                className="bytes-input"
             />
             <button onClick={fetchCarbonData} disabled={loading}>
                 {loading ? 'Checking...' : 'Check Carbon Footprint'}
@@ -54,7 +54,7 @@ export default function Home() {
 
             {carbonData && (
                 <div className="result">
-                    <h2>Results for {url}</h2>
+                    <h2>Results for {bytes}</h2>
                     <p>
                         Estimated CO₂ Emissions:{' '}
                         <strong>
