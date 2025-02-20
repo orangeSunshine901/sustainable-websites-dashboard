@@ -1,0 +1,19 @@
+.heroText {
+    color: aquamarine;
+    padding-bottom: 16px;
+}
+
+.heroText h1 {
+    margin-bottom: 8px;
+    width: 800px;
+}
+
+.heroText p {
+    margin-bottom: 8px;
+    width: 600px;
+    color: #fff;
+}
+
+.fileInput input[type='file']::file-selector-button {
+    color: aquamarine;
+}
